@@ -25,30 +25,14 @@ protected:
   matrix::SquareMatrix<float, 4> layout_;
 
   // Variables for dynamics function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  /// velocity of rigid body
-  matrix::Vector3<float> velocity_;
-
-  // Absolute velocity
-  matrix::Vector3<float> abs_velocity;
-
-  /// velocity of rigid body
-  matrix::Vector3<float> acceleration_;
-
-  /// Orientation as Z-Y-X Euler angle
-  matrix::Eulerf euler_orientation_;
-
-  // /// 2nd Time derivative of rigid body orientation
-  // matrix::Vector3<float> orientation_ddot_;
-
-  /// Angular acceleration of the rigid body
-  matrix::Vector3<float> angular_acceleration_;
-
   /// Rotation matrix - body to inertial frame
   matrix::Dcmf _R_OB;
 
   /// No need to computer inverse of inertia matrix in each function call
   matrix::SquareMatrix<float, 3> inertia_matrix_inverse_;
+
+  // Derivatve of state vector
+  matrix::Vector<float, 5> state_dot_;
 
   // Constants
 private:
@@ -79,19 +63,8 @@ public:
   /// Getter function
   float arm_length() const { return arm_length_; }
 
-  /// Getter function
-  matrix::Eulerf euler_orientation() const { return euler_orientation_; }
-
   // /// Getter function
   // matrix::Vector3<float> position_ddot() const { return position_ddot_; }
-
-  /// Getter function
-  matrix::Vector3<float> acceleration() const { return acceleration_; }
-
-  /// Getter function
-  matrix::Vector3<float> angular_acceleration() const {
-    return angular_acceleration_;
-  }
 
 public:
   void set_linear_drag_coeff(float data[3]) {
@@ -110,10 +83,5 @@ public:
     inertia_matrix_inverse_(0, 0) = 1 / inertia_matrix_(0, 0);
     inertia_matrix_inverse_(1, 1) = 1 / inertia_matrix_(1, 1);
     inertia_matrix_inverse_(1, 1) = 1 / inertia_matrix_(1, 1);
-  }
-
-  void set_euler_orientation() {
-    matrix::Eulerf euler_orientation(orientation_);
-    euler_orientation_ = euler_orientation * (180 / M_PI);
   }
 };
