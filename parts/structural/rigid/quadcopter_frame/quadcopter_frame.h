@@ -25,6 +25,7 @@ protected:
   matrix::SquareMatrix<float, 4> layout_;
 
   // Variables for dynamics function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   /// Rotation matrix - body to inertial frame
   matrix::Dcmf _R_OB;
 
@@ -51,34 +52,35 @@ public:
 
 public:
   /// Getter function
-  float linear_drag_coeff_x() const { return linear_drag_coeff_(0, 0); }
-  float linear_drag_coeff_y() const { return linear_drag_coeff_(1, 1); }
-  float linear_drag_coeff_z() const { return linear_drag_coeff_(2, 2); }
+  const float linear_drag_coeff_x() const { return linear_drag_coeff_(0, 0); }
+  const float linear_drag_coeff_y() const { return linear_drag_coeff_(1, 1); }
+  const float linear_drag_coeff_z() const { return linear_drag_coeff_(2, 2); }
 
   /// Getter function
-  float angular_drag_coeff_x() const { return angular_drag_coeff_(0, 0); }
-  float angular_drag_coeff_y() const { return angular_drag_coeff_(0, 0); }
-  float angular_drag_coeff_z() const { return angular_drag_coeff_(0, 0); }
+  const float angular_drag_coeff_x() const { return angular_drag_coeff_(0, 0); }
+  const float angular_drag_coeff_y() const { return angular_drag_coeff_(0, 0); }
+  const float angular_drag_coeff_z() const { return angular_drag_coeff_(0, 0); }
 
   /// Getter function
-  float arm_length() const { return arm_length_; }
-
-  // /// Getter function
-  // matrix::Vector3<float> position_ddot() const { return position_ddot_; }
+  const float arm_length() const { return arm_length_; }
 
 public:
+  /// Setter function
   void set_linear_drag_coeff(float data[3]) {
     matrix::Vector3f linear_drag_coeff(data);
     linear_drag_coeff_ = diag(linear_drag_coeff);
   }
 
+  /// Setter function
   void set_angular_drag_coeff(float data[3]) {
     matrix::Vector3f angular_drag_coeff(data);
     angular_drag_coeff_ = diag(angular_drag_coeff);
   }
 
+  /// Setter function
   void set_arm_length(float arm_length) { arm_length_ = arm_length; }
 
+  /// Setter function
   void set_inertia_matrix_inverse() {
     inertia_matrix_inverse_(0, 0) = 1 / inertia_matrix_(0, 0);
     inertia_matrix_inverse_(1, 1) = 1 / inertia_matrix_(1, 1);
