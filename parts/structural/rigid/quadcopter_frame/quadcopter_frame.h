@@ -68,13 +68,13 @@ public:
   /// Setter function
   void set_linear_drag_coeff(float data[3]) {
     matrix::Vector3f linear_drag_coeff(data);
-    linear_drag_coeff_ = diag(linear_drag_coeff);
+    linear_drag_coeff_ = matrix::diag(linear_drag_coeff);
   }
 
   /// Setter function
   void set_angular_drag_coeff(float data[3]) {
     matrix::Vector3f angular_drag_coeff(data);
-    angular_drag_coeff_ = diag(angular_drag_coeff);
+    angular_drag_coeff_ = matrix::diag(angular_drag_coeff);
   }
 
   /// Setter function
