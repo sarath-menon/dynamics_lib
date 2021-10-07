@@ -1,12 +1,10 @@
 #pragma once
 
-#include "utils.h"
 #include <matrix/math.hpp>
 using namespace matrix;
 
 /// Represents a Motor
-class Motor
-{
+class Motor {
 
 public:
   /// Loads the Motor properties from the yaml file
@@ -51,8 +49,7 @@ public:
   /// Getter function
   const float &mass() const { return mass_; }
   /// Getter function
-  const matrix::SquareMatrix<float, 3> &inertia_matrix() const
-  {
+  const matrix::SquareMatrix<float, 3> &inertia_matrix() const {
     return inertia_matrix_;
   }
 
@@ -78,8 +75,7 @@ public:
   void set_mass(float mass) { mass_ = mass; }
 
   /// Setter function
-  void set_inertia_matrix(float data[3][3])
-  {
+  void set_inertia_matrix(float data[3][3]) {
     matrix::SquareMatrix<float, 3> inertia_matrix(data);
     inertia_matrix_ = inertia_matrix;
   }

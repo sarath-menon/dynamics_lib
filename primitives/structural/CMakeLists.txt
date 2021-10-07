@@ -10,7 +10,6 @@ softbody/softbody.cpp
 target_include_directories(structural_primitives_lib PUBLIC rigidbody)
 target_include_directories(structural_primitives_lib PUBLIC softbody)
 
-target_link_libraries(structural_primitives_lib PUBLIC
-helper_lib
-)
+# target_link_libraries(structural_primitives_lib PUBLIC
+# )
 
