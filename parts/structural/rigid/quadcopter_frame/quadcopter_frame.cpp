@@ -64,24 +64,3 @@ void QuadcopterFrame::euler_step(const float dt) {
   // std::cout << "Angular Velocity:" << angular_velocity_(0) << '\t'
   //           << angular_velocity_(1) << '\t' << angular_velocity_(2) <<'\n';
 }
-
-///
-void QuadcopterFrame::attitude_tune_euler_step(const float dt) {
-
-  // Rotation
-  orientation_ = orientation_ * orientation_dot_;
-  // Is normalization required here ?
-  orientation_.normalize();
-
-  angular_velocity_ = angular_velocity_ + angular_acceleration_ * dt;
-
-  // Store update euler angle representation
-  set_euler_orientation();
-
-  // Plot variables for debugging
-
-  std::cout << "Orientation:" << orientation_(0) << '\t' << orientation_(1)
-            << '\t' << orientation_(2) << '\t' << orientation_(3) << '\n';
-  std::cout << "Angular Velocity:" << angular_velocity_(0) << '\t'
-            << angular_velocity_(1) << '\t' << angular_velocity_(2) << '\n';
-}

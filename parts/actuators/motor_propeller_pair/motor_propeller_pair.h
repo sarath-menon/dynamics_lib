@@ -43,23 +43,23 @@ public:
 
 public:
   /// Getter function
-  float time_constant() const { return time_constant_; }
+  const float &time_constant() const { return time_constant_; }
 
   /// Getter function
-  float actual_thrust() { return actual_thrust_; }
+  const float &actual_thrust() { return actual_thrust_; }
 
   /// Getter function
-  float actual_thrust_dot() const { return actual_thrust_dot_; }
+  const float &actual_thrust_dot() const { return actual_thrust_dot_; }
 
   /// Getter function
-  float thrust_max() const { return thrust_max_; }
+  const float &thrust_max() const { return thrust_max_; }
 
   /// Getter function
-  float thrust_min() const { return thrust_min_; }
+  const float &thrust_min() const { return thrust_min_; }
   /// Getter function
-  float k_f() { return k_f_; }
+  const float &k_f() { return k_f_; }
   /// Getter function
-  float k_t() { return k_t_; }
+  const float &k_t() { return k_t_; }
 
 public:
   /// Setter function

@@ -14,13 +14,13 @@ protected:
   // Position and Orientation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Angle of the swinging arm with respect to the inertial frame
-  double arm_angle_{};
+  float arm_angle_{};
 
   // Time derivatives of Position and Orietnation
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Time derivative of the arm angle
-  double arm_angle_dot_{};
+  float arm_angle_dot_{};
 
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -33,9 +33,9 @@ public:
 
 public:
   /// Getter function
-  float arm_angle() const { return arm_angle_; }
+  const float &arm_angle() const { return arm_angle_; }
   /// Getter function
-  float arm_angle_dot() const { return arm_angle_dot_; }
+  const float &arm_angle_dot() const { return arm_angle_dot_; }
   /// Getter function
-  float arm_length() const { return arm_length_; }
+  const float &arm_length() const { return arm_length_; }
 };

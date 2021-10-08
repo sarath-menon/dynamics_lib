@@ -46,17 +46,23 @@ public:
 
 public:
   /// Getter function
-  const float linear_drag_coeff_x() const { return linear_drag_coeff_(0, 0); }
-  const float linear_drag_coeff_y() const { return linear_drag_coeff_(1, 1); }
-  const float linear_drag_coeff_z() const { return linear_drag_coeff_(2, 2); }
+  const float &linear_drag_coeff_x() const { return linear_drag_coeff_(0, 0); }
+  const float &linear_drag_coeff_y() const { return linear_drag_coeff_(1, 1); }
+  const float &linear_drag_coeff_z() const { return linear_drag_coeff_(2, 2); }
 
   /// Getter function
-  const float angular_drag_coeff_x() const { return angular_drag_coeff_(0, 0); }
-  const float angular_drag_coeff_y() const { return angular_drag_coeff_(0, 0); }
-  const float angular_drag_coeff_z() const { return angular_drag_coeff_(0, 0); }
+  const float &angular_drag_coeff_x() const {
+    return angular_drag_coeff_(0, 0);
+  }
+  const float &angular_drag_coeff_y() const {
+    return angular_drag_coeff_(0, 0);
+  }
+  const float &angular_drag_coeff_z() const {
+    return angular_drag_coeff_(0, 0);
+  }
 
   /// Getter function
-  const float arm_length() const { return arm_length_; }
+  const float &arm_length() const { return arm_length_; }
 
 public:
   /// Setter function
