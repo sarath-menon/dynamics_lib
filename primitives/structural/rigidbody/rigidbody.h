@@ -16,7 +16,7 @@ protected:
   // Mass and Inertia Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Mass of the rigid body
-  float mass_ = 0;
+  float mass_{};
 
   // Inertia matrix of the rigid body
 
@@ -24,16 +24,16 @@ protected:
   // Position and Orietnation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Position of the rigid body
-  matrix::Vector3<float> position_;
+  matrix::Vector3f position_;
 
   // /// Derivative of position represenation of the rigid body
-  // matrix::Vector3<float> position_dot_;
+  // matrix::Vector3f position_dot_;
 
   /// Velocity of the rigid body
-  matrix::Vector3<float> velocity_;
+  matrix::Vector3f velocity_;
 
   /// velocity of rigid body
-  matrix::Vector3<float> acceleration_;
+  matrix::Vector3f acceleration_;
 
   /// Orientation of the rigid body as Quaternion (q_0, q_x, q_y, q_z)
   matrix::Quatf orientation_;
@@ -42,13 +42,13 @@ protected:
   matrix::Quatf orientation_dot_;
 
   /// Angular position_dot of the rigid body
-  matrix::Vector3<float> angular_velocity_;
+  matrix::Vector3f angular_velocity_;
 
   /// Orientation as Z-Y-X Euler angle
   matrix::Eulerf euler_orientation_;
 
   /// Angular acceleration of the rigid body
-  matrix::Vector3<float> angular_acceleration_;
+  matrix::Vector3f angular_acceleration_;
 
   // Getter Functions
 public:
@@ -61,17 +61,17 @@ public:
   }
 
   /// Getter function
-  const matrix::Vector3<float> &position() const { return position_; }
+  const matrix::Vector3f &position() const { return position_; }
 
   // /// Getter function
-  // const matrix::Vector3<float> &position_dot() const { return position_dot_;
+  // const matrix::Vector3f &position_dot() const { return position_dot_;
   // }
 
   /// Getter function
-  const matrix::Vector3<float> &velocity() const { return velocity_; }
+  const matrix::Vector3f &velocity() const { return velocity_; }
 
   /// Getter function
-  const matrix::Vector3<float> &acceleration() const { return acceleration_; }
+  const matrix::Vector3f &acceleration() const { return acceleration_; }
 
   /// Getter function
   const matrix::Quatf &orientation() const { return orientation_; }
@@ -83,12 +83,10 @@ public:
   const matrix::Quatf &orientation_dot() const { return orientation_dot_; }
 
   /// Getter function
-  const matrix::Vector3<float> &angular_velocity() const {
-    return angular_velocity_;
-  }
+  const matrix::Vector3f &angular_velocity() const { return angular_velocity_; }
 
   /// Getter function
-  const matrix::Vector3<float> &angular_acceleration() const {
+  const matrix::Vector3f &angular_acceleration() const {
     return angular_acceleration_;
   }
 
@@ -102,18 +100,19 @@ public:
   }
 
   /// Setter function
-  void set_position(matrix::Vector3<float> position) { position_ = position; }
+  void set_position(matrix::Vector3f position) { position_ = position; }
 
   // /// Setter function
-  // void set_position_dot(matrix::Vector3<float> position_dot) {
+  // void set_position_dot(matrix::Vector3f position_dot) {
   //   position_dot_ = position_dot;
   // }
 
-  void set_velocity(matrix::Vector3<float> velocity) { velocity_ = velocity; }
+  void set_velocity(matrix::Vector3f velocity) { velocity_ = velocity; }
 
   /// Setter function
   void set_orientation(matrix::Quatf orientation) {
     orientation_ = orientation;
+    set_euler_orientation();
   }
 
   void set_euler_orientation() {
@@ -122,7 +121,21 @@ public:
   }
 
   /// Setter function
-  void set_angular_velocity(matrix::Vector3<float> angular_velocity) {
+  void set_angular_velocity(matrix::Vector3f angular_velocity) {
     angular_velocity_ = angular_velocity;
+  }
+
+  void set_state(const matrix::Vector3f position,
+                 const matrix::Vector3f velocity,
+                 const matrix::Quatf orientation,
+                 const matrix::Vector3f angular_velocity) {
+
+    position_ = position;
+    velocity_ = velocity;
+    orientation_ = orientation;
+    angular_velocity_ = angular_velocity;
+
+    // Update euler angle from orientation quaternion
+    set_euler_orientation();
   }
 };

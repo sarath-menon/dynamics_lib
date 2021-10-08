@@ -30,15 +30,15 @@ protected:
 
   // Motor in RPM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  int speed_ = 0;
+  int speed_{};
 
   // Other properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   // Maximum speed of the motor
-  int max_speed_ = 0;
+  int max_speed_{};
 
   // Minimum speed of the motor
-  int min_speed_ = 0;
+  int min_speed_{};
 
 public:
   /// Have to be defined in the child class

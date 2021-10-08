@@ -14,18 +14,18 @@ protected:
   // Position and Orientation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Angle of the swinging arm with respect to the inertial frame
-  double arm_angle_ = 0;
+  double arm_angle_{};
 
   // Time derivatives of Position and Orietnation
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Time derivative of the arm angle
-  double arm_angle_dot_ = 0;
+  double arm_angle_dot_{};
 
   // Geometrical Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Length of the swinging arm
-  float arm_length_ = 0;
+  float arm_length_{};
 
 public:
   /// Arm Dynamics

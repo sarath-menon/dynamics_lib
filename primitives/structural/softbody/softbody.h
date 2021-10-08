@@ -15,7 +15,7 @@ protected:
   // Mass and Inertia Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Mass of the soft body
-  float mass_ = 0;
+  float mass_{};
 
   /// Inertia matrix of the soft body
   matrix::SquareMatrix<float, 3> inertia_matrix_;
@@ -39,7 +39,7 @@ protected:
 
 public:
   /// Have to be defined in the child class
-  virtual void Dynamics() = 0;
+  virtual void Dynamics(){};
 
   // Getter Functions
 public:
