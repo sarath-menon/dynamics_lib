@@ -18,5 +18,6 @@ quadcopter_frame_x
 
 target_link_libraries(structural_lib PRIVATE
 primitives_lib
+comm_lib
 )
 

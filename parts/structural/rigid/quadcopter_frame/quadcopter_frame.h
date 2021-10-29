@@ -1,4 +1,5 @@
 #pragma once
+#include "quadcopter_msgs/msgs/ThrustTorqueCommand.h"
 #include "rigidbody.h"
 
 /// Represents the quadcopter
@@ -21,6 +22,9 @@ protected:
   /// Distance from the quadcopter's center of mass to the propellor
   float arm_length_{};
 
+  // Thrust-Torque command
+  cpp_msg::ThrustTorqueCommand thrust_torque_cmd_{};
+
   // Variables for dynamics function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   /// Rotation matrix - body to inertial frame
@@ -36,8 +40,7 @@ private:
 
 public:
   /// Quadcopter Dynamics
-  void dynamics(const matrix::Vector3f body_thrust,
-                const matrix::Vector3f body_torque);
+  void dynamics(const cpp_msg::ThrustTorqueCommand thrust_torque_command);
 
   void euler_step(const float dt);
 

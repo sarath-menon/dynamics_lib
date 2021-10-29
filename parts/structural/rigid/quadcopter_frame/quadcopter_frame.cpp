@@ -6,8 +6,17 @@
 QuadcopterFrame ::QuadcopterFrame() {}
 
 /// Equations of motion for a quadcopter frames
-void QuadcopterFrame::dynamics(const matrix::Vector3f body_thrust,
-                               const matrix::Vector3f body_torques) {
+void QuadcopterFrame::dynamics(
+    const cpp_msg::ThrustTorqueCommand thrust_torque_command) {
+
+  // Declare px4::matrix types for math operations
+  matrix::Vector3f body_thrust{};
+  matrix::Vector3f body_torques{};
+
+  body_thrust(2) = thrust_torque_command.thrust;
+  body_torques(0) = thrust_torque_command.roll_torque;
+  body_torques(1) = thrust_torque_command.pitch_torque;
+  body_torques(2) = thrust_torque_command.yaw_torque;
 
   // Compute body to inertial frame transformation
   _R_OB = matrix::Dcm<float>(orientation_);

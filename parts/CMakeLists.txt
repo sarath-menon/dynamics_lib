@@ -8,6 +8,7 @@ target_link_libraries(parts_lib INTERFACE
 structural_lib
 actuator_lib
 sensor_lib
+comm_lib
 )
 
 add_subdirectory(structural)
